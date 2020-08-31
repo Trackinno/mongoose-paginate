@@ -80,9 +80,8 @@ function paginate(query, options, callback) {
     if (typeof callback === 'function') {
       return callback(null, result);
     }
-    let promise = new Promise();
-    promise.resolve(result);
-    return promise;
+    
+    return Promise.resolve(result);
   });
 }
 
