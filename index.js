@@ -23,6 +23,7 @@ function paginate(query, options, callback) {
     var sort       = options.sort;
     var populate   = options.populate;
     var lean       = options.lean || false;
+    var optionalExpression = options.optionalExpression || {};
     var leanWithId = options.hasOwnProperty('leanWithId') ? options.leanWithId : true;
 
     var limit = options.hasOwnProperty('limit') ? options.limit : 10;
@@ -46,7 +47,7 @@ function paginate(query, options, callback) {
     };
 
     if (limit) {
-        var query = this.find(query)
+        var query = this.find(query, optionalExpression)
                         .select(select)
                         .sort(sort)
                         .skip(skip)
